@@ -22,7 +22,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	float movementBlockTimer = 5f;
 	bool justCollisionned = false;
 
-	bool isAttacking;
+	bool isAttacking = false;
 	float attackDelay;
 	
 	void Awake()
@@ -58,10 +58,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	{
 		if(!attack && anim.GetBool("Attack"))
 		{
-			if( Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
-			{
-				attack = true;
-			}
+			attack = true;
 		}
 
 		if(grounded || airControl)
