@@ -27,6 +27,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	float attackDelay;
 	Vector3 spawnPosAttack;
 	Quaternion spawnRotAttack;
+
+	float deathDelay = 0.5f;
+	bool isDying = false;
 	
 	void Awake()
 	{
@@ -38,61 +41,71 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
-		
-		if(justCollisionned)
-		{
-			movementBlockTimer -= Time.deltaTime;
+		if(!isDying){
+			anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
 			
-			if ( movementBlockTimer <= 0 )
+			if(justCollisionned)
 			{
-				justCollisionned = false;
-				airControl = true;
+				movementBlockTimer -= Time.deltaTime;
+				
+				if ( movementBlockTimer <= 0 )
+				{
+					justCollisionned = false;
+					airControl = true;
+				}
+			}
+			else{
+				grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
+				anim.SetBool("Ground", grounded);
 			}
 		}
 		else{
-			grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-			anim.SetBool("Ground", grounded);
+			deathDelay -= Time.deltaTime;
+			if(deathDelay <= 0){
+				isDying = false;
+				gameObject.GetComponent<PlayerState>().Dies();
+
+			}
 		}
 	}
 	
 	
 	public void Move(float move, bool attack, bool jump)
 	{
-		if(!attack && anim.GetBool("Attack"))
-		{
-			attack = true;
-		}
-
-		if(grounded || airControl)
-		{
-			if(!isAttacking && attack){
-				Attack();
-				attackDelay = 0.3f;
-				attack = false;
+			if(!attack && anim.GetBool("Attack"))
+			{
+				attack = true;
 			}
-			else{
-				attackDelay -= Time.deltaTime;
-				if(attackDelay <= 0){
-					isAttacking = false;
+
+			if(grounded || airControl)
+			{
+				if(!isAttacking && attack){
+					Attack();
+					attackDelay = 0.3f;
+					attack = false;
 				}
+				else{
+					attackDelay -= Time.deltaTime;
+					if(attackDelay <= 0){
+						isAttacking = false;
+					}
+				}
+
+				anim.SetBool("Attack", attack);
+				anim.SetFloat("Speed", Mathf.Abs(move));
+
+				rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+
+				if(move > 0 && !facingRight)
+					Flip();
+				else if(move < 0 && facingRight)
+					Flip();
 			}
 
-			anim.SetBool("Attack", attack);
-			anim.SetFloat("Speed", Mathf.Abs(move));
-
-			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
-
-			if(move > 0 && !facingRight)
-				Flip();
-			else if(move < 0 && facingRight)
-				Flip();
-		}
-
-		if (grounded && jump) {
-			anim.SetBool("Ground", false);
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-		}
+			if (grounded && jump) {
+				anim.SetBool("Ground", false);
+				rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			}
 	}
 	
 	
@@ -147,7 +160,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 	void Death(){
-		gameObject.GetComponent<PlayerState>().Dies();
+		isDying = true;
+		deathDelay = 0.5f;
+		
+		//anim
 	}
 
 }
