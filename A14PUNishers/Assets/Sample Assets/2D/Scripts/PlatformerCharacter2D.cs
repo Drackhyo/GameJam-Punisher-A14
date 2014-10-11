@@ -58,6 +58,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 				grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 				anim.SetBool("Ground", grounded);
 			}
+
+			anim.SetBool("IsHurt", justCollisionned);
 		}
 		else{
 			deathDelay -= Time.deltaTime;
