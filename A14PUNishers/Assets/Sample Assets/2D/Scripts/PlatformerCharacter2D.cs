@@ -20,6 +20,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
 	Animator anim;										// Reference to the player's animator component.
 
+	float movementBlockTimer = 5f;
+	bool justCollisionned = false;
 
     void Awake()
 	{
@@ -38,9 +40,20 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		// Set the vertical animation
 		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
+		if (justCollisionned)
+		{
+			KnockBack();
+			movementBlockTimer = 5f;
+			while ( movementBlockTimer > 0 )
+			{
+				airControl = false;
+				movementBlockTimer -= Time.deltaTime;
+			}
+			justCollisionned = false;
+		}
 	}
-
-
+	
+	
 	public void Move(float move, bool crouch, bool jump)
 	{
 
@@ -100,17 +113,18 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if ( collision.gameObject.tag != "Platform" )
-			KnockBack();
+		if ( collision.gameObject.tag != "Platform" && !justCollisionned )
+		{
+			justCollisionned = true;
+		}
 	}
 
 	void KnockBack()
 	{
 		if ( facingRight )
-			rigidbody2D.AddForce(new Vector2(-500f, jumpForce/2.5f));
+			rigidbody2D.AddForce(new Vector2(-500, 400f));
 		else
-			rigidbody2D.AddForce(new Vector2(500f, jumpForce/2.5f));
+			rigidbody2D.AddForce(new Vector2(500, 400f));
 	}
-
 
 }
