@@ -29,7 +29,7 @@ public class PlayerState : MonoBehaviour {
 		health -= amount;
 	}
 
-	void Dies()
+	public void Dies()
 	{
 		lives--;
 		if (lives > 0)
