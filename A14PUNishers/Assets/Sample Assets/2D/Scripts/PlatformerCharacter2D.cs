@@ -21,6 +21,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	float movementBlockTimer = 5f;
 	bool justCollisionned = false;
+
+	bool isAttacking;
+	float attackDelay;
 	
 	void Awake()
 	{
@@ -63,8 +66,19 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		if(grounded || airControl)
 		{
-			anim.SetBool("Attack", attack);
+			if(!isAttacking && attack){
+				Attack();
+				attackDelay = 0.3f;
+				attack = false;
+			}
+			else{
+				attackDelay -= Time.deltaTime;
+				if(attackDelay <= 0){
+					isAttacking = false;
+				}
+			}
 
+			anim.SetBool("Attack", attack);
 			anim.SetFloat("Speed", Mathf.Abs(move));
 
 			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
@@ -111,5 +125,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 		else
 			rigidbody2D.velocity = new Vector2(5, 9f);
 	}
-	
+
+	void Attack(){
+		isAttacking = true;
+	}
+
 }
