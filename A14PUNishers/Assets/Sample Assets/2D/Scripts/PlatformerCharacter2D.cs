@@ -117,8 +117,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 			anim.SetBool("Attack", false);
 		}
 
-		if(collision.gameObject.tag != ""){
-
+		if(collision.gameObject.tag == "KillZone"){
+			Death();
 		}
 	}
 	
@@ -144,6 +144,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 			spawnRotAttack.x = 50;
 		}
 		GameObject slash = GameObject.Instantiate(attack, spawnPosAttack, spawnRotAttack)as GameObject;
+	}
+
+	void Death(){
+		gameObject.GetComponent<PlayerState>().Dies();
 	}
 
 }
