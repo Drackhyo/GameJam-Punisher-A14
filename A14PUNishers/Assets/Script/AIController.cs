@@ -9,6 +9,7 @@ public class AIController : MonoBehaviour {
 
 	float isAttackingTimer=1;
 	Vector3 spawnpos;
+	bool hasShot=false;
 
 	public float stunDelay=1;
 	public float moveSpeed=4;
@@ -20,7 +21,8 @@ public class AIController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player=GameObject.FindGameObjectWithTag("Player").transform;
+		player= GameObject.FindGameObjectWithTag("Player").transform;
+		Debug.Log(player.gameObject.name);
 		enemyState = gameObject.GetComponent<EnemyState>();
 		anim = gameObject.GetComponent<Animator>();
 	}
@@ -29,7 +31,6 @@ public class AIController : MonoBehaviour {
 	void Update () 
 	{
 		stunnedTime += Time.deltaTime;
-
 		Vector3 newPosition = transform.position;
 		if(stunnedTime>stunDelay)
 		{
@@ -39,15 +40,14 @@ public class AIController : MonoBehaviour {
 			if(facingRight)
 			{
 				newPosition.x += moveSpeed * Time.deltaTime; 
-				spawnpos.x+=(collider2D.bounds.size.x/1.5f);
+				spawnpos.x+=1;
 			}
 			else
 			{
 				newPosition.x -= moveSpeed * Time.deltaTime; 
-				spawnpos.x-=(collider2D.bounds.size.x/1.5f);
+				spawnpos.x-=1;
 				
 			}
-			Debug.Log(spawnpos);
 			if(timeSinceLastShot>shotDelay && (((player.position.x<=transform.position.x)&&!facingRight)||((player.position.x>=transform.position.x)&&facingRight)))
 			{
 				timeSinceLastShot=0;
@@ -60,28 +60,37 @@ public class AIController : MonoBehaviour {
 				isAttackingTimer+=Time.deltaTime;
 				if(isAttackingTimer>0.25f)
 				{
-					isAttackingTimer=1;
 					anim.SetFloat("TimeAttacking",isAttackingTimer);
-					GameObject bulletShot=GameObject.Instantiate(BulletPrefab,spawnpos,transform.rotation)as GameObject;
-					Vector2 tempVector= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
-					tempVector.Normalize();
-					tempVector=tempVector*8;
-					bulletShot.rigidbody2D.velocity= tempVector; 
-
+					if(hasShot==false)
+						{
+						GameObject bulletShot=GameObject.Instantiate(BulletPrefab,spawnpos,transform.rotation)as GameObject;
+						Vector2 tempVector= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
+						tempVector.Normalize();
+						tempVector=tempVector*8;
+						bulletShot.rigidbody2D.velocity= tempVector;
+						hasShot=true;
+					}
 				}
+				else if(isAttackingTimer>0.35f)
+				{
+					isAttackingTimer=1;
+					hasShot=false;
+				}
+
 
 			}
 			else
 			{
+				hasShot=false;
 				transform.position=newPosition;
 			}
+			Debug.Log(hasShot);
 
 		}
 
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		Debug.Log(collision.gameObject.name);
 
 		if ( collision.gameObject.tag != "Platform" && collision.gameObject.tag != "Bullet" )
 		{
