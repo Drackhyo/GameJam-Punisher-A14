@@ -60,10 +60,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				attack = true;
 			}
 		}
-		anim.SetBool("Attack", attack);
 
 		if(grounded || airControl)
 		{
+			anim.SetBool("Attack", attack);
+
 			anim.SetFloat("Speed", Mathf.Abs(move));
 
 			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
@@ -99,6 +100,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			airControl = false;
 			grounded = false;
 			KnockBack();
+			anim.SetBool("Attack", false);
 		}
 	}
 	
