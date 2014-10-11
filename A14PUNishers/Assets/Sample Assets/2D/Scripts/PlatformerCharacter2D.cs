@@ -122,6 +122,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+
 		if ( collision.gameObject.tag != "Platform" && !justCollisionned )
 		{
 			justCollisionned = true;
@@ -132,7 +133,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			anim.SetBool("Attack", false);
 		}
 
-		if(collision.gameObject.tag == "KillZone"){
+		else if(collision.gameObject.tag == "KillZone"){
 			Death();
 		}
 	}
