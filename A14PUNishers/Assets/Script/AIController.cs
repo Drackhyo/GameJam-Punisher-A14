@@ -62,6 +62,17 @@ public class AIController : MonoBehaviour {
 		transform.position = newPosition;
 
 	}
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		Debug.Log(collision.gameObject.name);
+		if(collision.gameObject.layer!=0)
+		{
+			if(facingRight)
+				transform.position=new Vector3(transform.position.x-1,transform.position.y,0);
+			else
+				transform.position=new Vector3(transform.position.x+1,transform.position.y,0);
+		}
+	}
 	public void Flip ()
 	{
 		facingRight = !facingRight;
