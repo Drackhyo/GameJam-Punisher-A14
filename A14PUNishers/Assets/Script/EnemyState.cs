@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyStats : MonoBehaviour {
+public class EnemyState : MonoBehaviour {
 
 	int health;
 
@@ -17,6 +17,11 @@ public class EnemyStats : MonoBehaviour {
 	{
 		if (health <= 0)
 			Dies();
+	}
+
+	public void TakeDamage(int amount)
+	{
+		health -= amount;
 	}
 
 	void Dies()

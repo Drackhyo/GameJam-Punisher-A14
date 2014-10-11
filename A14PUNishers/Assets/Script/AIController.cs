@@ -13,11 +13,15 @@ public class AIController : MonoBehaviour {
 	public float moveSpeed=4;
 	public GameObject BulletPrefab;
 	public float shotDelay=2;
+
+	EnemyState enemyState;
+
 	// Use this for initialization
 	void Start () {
 		targets = new List<Transform>();
 		player=GameObject.FindGameObjectWithTag("Player").transform;
 		targets.Add(player.transform);
+		enemyState = gameObject.GetComponent<EnemyState>();
 	}
 	
 	// Update is called once per frame
@@ -75,6 +79,7 @@ public class AIController : MonoBehaviour {
 		if ( collision.gameObject.tag != "Platform" && collision.gameObject.tag != "Bullet" )
 		{
 			KnockBack();
+			enemyState.TakeDamage(1);
 			stunnedTime=0;
 		}
 	}
@@ -82,9 +87,9 @@ public class AIController : MonoBehaviour {
 	void KnockBack()
 	{
 		if ( facingRight )
-			rigidbody2D.velocity = new Vector2(-5, 9f);
+			rigidbody2D.velocity = new Vector2(-3, 3f);
 		else
-			rigidbody2D.velocity = new Vector2(5, 9f);
+			rigidbody2D.velocity = new Vector2(3, 3f);
 	}
 
 	public void Flip ()

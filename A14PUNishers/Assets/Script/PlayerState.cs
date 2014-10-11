@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStats : MonoBehaviour {
+public class PlayerState : MonoBehaviour {
 
 	int health = 3;
 	int lives = 3;
