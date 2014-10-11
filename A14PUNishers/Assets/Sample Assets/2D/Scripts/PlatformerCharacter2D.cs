@@ -3,10 +3,10 @@
 public class PlatformerCharacter2D : MonoBehaviour 
 {
 	bool facingRight = true;							// For determining which way the player is currently facing.
-
+	
 	[SerializeField] float maxSpeed = 10f;				// The fastest the player can travel in the x axis.
 	[SerializeField] float jumpForce = 400f;			// Amount of force added when the player jumps.	
-
+	
 	[Range(0, 1)]
 	[SerializeField] float crouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	
@@ -19,45 +19,46 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Transform ceilingCheck;								// A position marking where to check for ceilings
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
 	Animator anim;										// Reference to the player's animator component.
-
+	
 	float movementBlockTimer = 5f;
 	bool justCollisionned = false;
-
-    void Awake()
+	
+	void Awake()
 	{
 		// Setting up references.
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
 		anim = GetComponent<Animator>();
 	}
-
-
+	
+	
 	void FixedUpdate()
 	{
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-		anim.SetBool("Ground", grounded);
-
 		// Set the vertical animation
 		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
+		
 		if (justCollisionned)
 		{
-			KnockBack();
-			movementBlockTimer = 5f;
-			while ( movementBlockTimer > 0 )
+			movementBlockTimer -= Time.deltaTime;
+			
+			if ( movementBlockTimer <= 0 )
 			{
-				airControl = false;
-				movementBlockTimer -= Time.deltaTime;
+				justCollisionned = false;
+				airControl = true;
 			}
-			justCollisionned = false;
+		}
+		else{
+			// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+			grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
+			anim.SetBool("Ground", grounded);
 		}
 	}
 	
 	
 	public void Move(float move, bool crouch, bool jump)
 	{
-
-
+		
+		
 		// If crouching, check to see if the character can stand up
 		if(!crouch && anim.GetBool("Crouch"))
 		{
@@ -65,19 +66,19 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if( Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
 				crouch = true;
 		}
-
+		
 		// Set whether or not the character is crouching in the animator
 		anim.SetBool("Crouch", crouch);
-
+		
 		//only control the player if grounded or airControl is turned on
 		if(grounded || airControl)
 		{
 			// Reduce the speed if crouching by the crouchSpeed multiplier
 			move = (crouch ? move * crouchSpeed : move);
-
+			
 			// The Speed animator parameter is set to the absolute value of the horizontal input.
 			anim.SetFloat("Speed", Mathf.Abs(move));
-
+			
 			// Move the character
 			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 			
@@ -90,15 +91,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 		}
-
-        // If the player should jump...
-        if (grounded && jump) {
-            // Add a vertical force to the player.
-            anim.SetBool("Ground", false);
-            rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-        }
+		
+		// If the player should jump...
+		if (grounded && jump) {
+			// Add a vertical force to the player.
+			anim.SetBool("Ground", false);
+			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+		}
 	}
-
+	
 	
 	void Flip ()
 	{
@@ -110,21 +111,25 @@ public class PlatformerCharacter2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
-
+	
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		if ( collision.gameObject.tag != "Platform" && !justCollisionned )
 		{
 			justCollisionned = true;
+			movementBlockTimer = .3f;
+			airControl = false;
+			grounded = false;
+			KnockBack();
 		}
 	}
-
+	
 	void KnockBack()
 	{
 		if ( facingRight )
-			rigidbody2D.AddForce(new Vector2(-500, 400f));
+			rigidbody2D.velocity = new Vector2(-5, 9f);
 		else
-			rigidbody2D.AddForce(new Vector2(500, 400f));
+			rigidbody2D.velocity = new Vector2(5, 9f);
 	}
-
+	
 }
