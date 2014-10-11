@@ -54,6 +54,7 @@
      <Compile Include="Assets\Script\AIController.cs" />
      <Compile Include="Assets\Script\BulletController.cs" />
      <Compile Include="Assets\Script\Parallaxing.cs" />
+     <Compile Include="Assets\Script\PlatformChecker.cs" />
      <Compile Include="Assets\Script\Tiling.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
