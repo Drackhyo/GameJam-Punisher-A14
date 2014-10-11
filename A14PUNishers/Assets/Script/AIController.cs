@@ -84,7 +84,7 @@ public class AIController : MonoBehaviour {
 				hasShot=false;
 				transform.position=newPosition;
 			}
-			Debug.Log(hasShot);
+			//Debug.Log(hasShot);
 
 		}
 
