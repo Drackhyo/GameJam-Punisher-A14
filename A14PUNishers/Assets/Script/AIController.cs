@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class AIController : MonoBehaviour {
 	private Transform player;
-	private List<Transform> targets;
 	private float timeSinceLastShot=0;
 	private bool facingRight=true;
-	private float stunnedTime=0;
+	private float stunnedTime=0.75f;
 
 	float isAttackingTimer=1;
 	Vector3 spawnpos;
@@ -22,9 +20,7 @@ public class AIController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		targets = new List<Transform>();
 		player=GameObject.FindGameObjectWithTag("Player").transform;
-		targets.Add(player.transform);
 		enemyState = gameObject.GetComponent<EnemyState>();
 		anim = gameObject.GetComponent<Animator>();
 	}
@@ -54,8 +50,6 @@ public class AIController : MonoBehaviour {
 			Debug.Log(spawnpos);
 			if(timeSinceLastShot>shotDelay && (((player.position.x<=transform.position.x)&&!facingRight)||((player.position.x>=transform.position.x)&&facingRight)))
 			{
-
-
 				timeSinceLastShot=0;
 				isAttackingTimer=0;
 				anim.SetFloat("TimeAttacking",isAttackingTimer);
@@ -66,13 +60,14 @@ public class AIController : MonoBehaviour {
 				isAttackingTimer+=Time.deltaTime;
 				if(isAttackingTimer>0.25f)
 				{
+					isAttackingTimer=1;
 					anim.SetFloat("TimeAttacking",isAttackingTimer);
 					GameObject bulletShot=GameObject.Instantiate(BulletPrefab,spawnpos,transform.rotation)as GameObject;
 					Vector2 tempVector= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
 					tempVector.Normalize();
 					tempVector=tempVector*8;
 					bulletShot.rigidbody2D.velocity= tempVector; 
-					isAttackingTimer=1;
+
 				}
 
 			}
@@ -80,14 +75,6 @@ public class AIController : MonoBehaviour {
 			{
 				transform.position=newPosition;
 			}
-				/*
-					else if((!(timeSinceLastShot<shotDelay*0.9f||timeSinceLastShot<shotDelay*1.1f)))
-					{
-						anim.SetBool("IsAttacking",true);
-						
-					}
-				}
-			}*/
 
 		}
 
