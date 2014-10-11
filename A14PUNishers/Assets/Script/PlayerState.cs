@@ -10,6 +10,14 @@ public class PlayerState : MonoBehaviour {
 	bool hasArms = true;
 	bool hasLegs = true;
 
+	GameObject startLocation;
+
+	void Start()
+	{
+		startLocation = GameObject.Find("LevelStart");
+		Respawn ();
+
+	}
 	void Update()
 	{
 		if (health <= 0)
@@ -23,9 +31,9 @@ public class PlayerState : MonoBehaviour {
 
 	void Dies()
 	{
+		lives--;
 		if (lives > 0)
 		{
-			lives--;
 			Respawn();
 		}
 		else
@@ -36,7 +44,6 @@ public class PlayerState : MonoBehaviour {
 
 	void Respawn()
 	{
-		//Change position
-		//Full health
+		transform.position = new Vector2(startLocation.transform.position.x, startLocation.transform.position.y);
 	}
 }
