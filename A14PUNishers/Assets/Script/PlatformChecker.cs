@@ -28,4 +28,11 @@ public class PlatformChecker : MonoBehaviour {
 	{
 		isOnPlatform=true;
 	}
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		if(coll.gameObject.tag=="Spike")
+		{
+			transform.parent.gameObject.GetComponent<AIController>().Flip();
+		}
+	}
 }
