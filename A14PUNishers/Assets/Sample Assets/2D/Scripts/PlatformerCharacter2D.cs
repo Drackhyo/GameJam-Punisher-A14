@@ -22,8 +22,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 	float movementBlockTimer = 5f;
 	bool justCollisionned = false;
 
+	public GameObject attack;
 	bool isAttacking = false;
 	float attackDelay;
+	Vector3 spawnPosAttack;
+	Quaternion spawnRotAttack;
 	
 	void Awake()
 	{
@@ -123,8 +126,20 @@ public class PlatformerCharacter2D : MonoBehaviour
 			rigidbody2D.velocity = new Vector2(5, 9f);
 	}
 
+
 	void Attack(){
 		isAttacking = true;
+		if(facingRight){
+			spawnPosAttack = new Vector3(transform.position.x+1, transform.position.y, transform.position.z);
+			spawnRotAttack = new Quaternion();
+			spawnRotAttack.x = 50;
+		}
+		else{
+			spawnPosAttack = new Vector3(transform.position.x-1, transform.position.y, transform.position.z);
+			spawnRotAttack = new Quaternion();
+			spawnRotAttack.x = 50;
+		}
+		GameObject slash = GameObject.Instantiate(attack, spawnPosAttack, spawnRotAttack)as GameObject;
 	}
 
 }
