@@ -30,6 +30,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	float deathDelay = 0.5f;
 	bool isDying = false;
+
+	bool isConverting = false;
 	
 	void Awake()
 	{
@@ -72,42 +74,56 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 	
 	
-	public void Move(float move, bool attack, bool jump)
+	public void Move(float move, bool attack, bool jump, bool convert)
 	{
-			if(!attack && anim.GetBool("Attack"))
-			{
-				attack = true;
-			}
 
-			if(grounded || airControl)
-			{
-				if(!isAttacking && attack){
-					Attack();
-					attackDelay = 0.3f;
-					attack = false;
+		if(grounded || airControl)
+		{
+			if(!isAttacking && attack){
+				Attack();
+				attackDelay = 0.4f;
+				attack = false;
+			}
+			else{
+				attackDelay -= Time.deltaTime;
+				if(attackDelay <= 0){
+					isAttacking = false;
 				}
-				else{
-					attackDelay -= Time.deltaTime;
-					if(attackDelay <= 0){
-						isAttacking = false;
-					}
+			}
+
+			anim.SetBool("Attack", attack);
+			anim.SetFloat("Speed", Mathf.Abs(move));
+
+			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+
+			if(move > 0 && !facingRight)
+				Flip();
+			else if(move < 0 && facingRight)
+				Flip();
+		}
+
+		if (grounded && jump) {
+			anim.SetBool("Ground", false);
+			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+		}
+
+		if(convert){
+			Conversion();
+		}
+	}
+
+
+	void Conversion(){
+		if(!isConverting){
+			isConverting = true;
+			foreach (GameObject body in GameObject.FindGameObjectsWithTag("Body")){
+				if((body.transform.position-transform.position).magnitude <= 2){
+					Debug.Log("converting yo ass");
+					break;
 				}
-
-				anim.SetBool("Attack", attack);
-				anim.SetFloat("Speed", Mathf.Abs(move));
-
-				rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
-
-				if(move > 0 && !facingRight)
-					Flip();
-				else if(move < 0 && facingRight)
-					Flip();
-			}
-
-			if (grounded && jump) {
-				anim.SetBool("Ground", false);
-				rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-			}
+			};
+		}
+		//mettre is converting a false
 	}
 	
 	

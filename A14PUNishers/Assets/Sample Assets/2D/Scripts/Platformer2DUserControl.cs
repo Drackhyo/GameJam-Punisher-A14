@@ -27,6 +27,7 @@ public class Platformer2DUserControl : MonoBehaviour
 	{
 		// Read the inputs.
 		bool attack = Input.GetKey(KeyCode.LeftControl);
+		bool convert = Input.GetKey(KeyCode.F);
 		#if CROSS_PLATFORM_INPUT
 		float h = CrossPlatformInput.GetAxis("Horizontal");
 		#else
@@ -34,7 +35,7 @@ public class Platformer2DUserControl : MonoBehaviour
 		#endif
 
 		// Pass all parameters to the character control script.
-		character.Move( h, attack , jump );
+		character.Move( h, attack , jump, convert );
 
         // Reset the jump input once it has been used.
 	    jump = false;

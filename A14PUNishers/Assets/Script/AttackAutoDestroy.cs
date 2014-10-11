@@ -17,4 +17,12 @@ public class AttackAutoDestroy : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
+	void OnTriggerStay2D(Collider2D coll)
+	{
+		if(coll.gameObject.layer==11)
+		{
+			coll.gameObject.GetComponent<AIController>().KnockBack(1);
+		}
+	}
 }

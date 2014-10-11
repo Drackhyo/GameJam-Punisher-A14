@@ -84,7 +84,7 @@ public class AIController : MonoBehaviour {
 				hasShot=false;
 				transform.position=newPosition;
 			}
-			Debug.Log(hasShot);
+			//Debug.Log(hasShot);
 
 		}
 
@@ -94,19 +94,23 @@ public class AIController : MonoBehaviour {
 
 		if ( collision.gameObject.tag != "Platform" && collision.gameObject.tag != "Bullet" )
 		{
-			KnockBack();
-			enemyState.TakeDamage(1);
-			stunnedTime=0;
-			anim.SetBool("IsStunned",true);
+			KnockBack(1);
 		}
 	}
 
-	void KnockBack()
+	public void KnockBack(int damage=0)
 	{
-		if ( facingRight )
-			rigidbody2D.velocity = new Vector2(-3, 3f);
-		else
-			rigidbody2D.velocity = new Vector2(3, 3f);
+		if(stunnedTime>=stunDelay)
+		{
+			enemyState.TakeDamage(damage);
+			if ( facingRight )
+				rigidbody2D.velocity = new Vector2(-3, 3f);
+			else
+				rigidbody2D.velocity = new Vector2(3, 3f);
+
+			stunnedTime=0;
+			anim.SetBool("IsStunned",true);
+		}
 	}
 
 	public void Flip ()
