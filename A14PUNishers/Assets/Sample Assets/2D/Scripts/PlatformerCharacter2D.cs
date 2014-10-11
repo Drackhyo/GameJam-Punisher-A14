@@ -97,4 +97,20 @@ public class PlatformerCharacter2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if ( collision.gameObject.tag != "Platform" )
+			KnockBack();
+	}
+
+	void KnockBack()
+	{
+		if ( facingRight )
+			rigidbody2D.AddForce(new Vector2(-5000f, jumpForce/3));
+		else
+			rigidbody2D.AddForce(new Vector2(5000f, jumpForce/3));
+	}
+
+
 }
