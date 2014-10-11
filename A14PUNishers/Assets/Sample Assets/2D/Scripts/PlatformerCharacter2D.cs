@@ -116,6 +116,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 			KnockBack();
 			anim.SetBool("Attack", false);
 		}
+
+		if(collision.gameObject.tag != ""){
+
+		}
 	}
 	
 	void KnockBack()
