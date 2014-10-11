@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{E22E4CC8-5FF1-442D-DA69-D22A9886B911}") = "A14PUNishers", "Assembly-CSharp.csproj", "{089EA924-8608-81FC-2C67-E35F8ED3802C}"
 EndProject
-Project("{E22E4CC8-5FF1-442D-DA69-D22A9886B911}") = "A14PUNishers", "Assembly-Boo.booproj", "{04579C0F-E0ED-446C-07E2-36846B3C7CAA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,15 +13,12 @@ Global
 		{089EA924-8608-81FC-2C67-E35F8ED3802C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{089EA924-8608-81FC-2C67-E35F8ED3802C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{089EA924-8608-81FC-2C67-E35F8ED3802C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04579C0F-E0ED-446C-07E2-36846B3C7CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04579C0F-E0ED-446C-07E2-36846B3C7CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04579C0F-E0ED-446C-07E2-36846B3C7CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04579C0F-E0ED-446C-07E2-36846B3C7CAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 																										GlobalSection(MonoDevelopProperties) = preSolution
+																												GlobalSection(MonoDevelopProperties) = preSolution
 														GlobalSection(MonoDevelopProperties) = preSolution
 			GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
