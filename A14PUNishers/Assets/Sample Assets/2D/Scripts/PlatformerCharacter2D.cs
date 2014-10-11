@@ -107,9 +107,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	void KnockBack()
 	{
 		if ( facingRight )
-			rigidbody2D.AddForce(new Vector2(-5000f, jumpForce/3));
+			rigidbody2D.AddForce(new Vector2(-500f, jumpForce/2.5f));
 		else
-			rigidbody2D.AddForce(new Vector2(5000f, jumpForce/3));
+			rigidbody2D.AddForce(new Vector2(500f, jumpForce/2.5f));
 	}
 
 
