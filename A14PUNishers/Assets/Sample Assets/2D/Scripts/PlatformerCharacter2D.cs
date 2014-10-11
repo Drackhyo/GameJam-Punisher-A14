@@ -56,9 +56,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 		if(!attack && anim.GetBool("Attack"))
 		{
 			if( Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
+			{
 				attack = true;
+			}
 		}
-
 		anim.SetBool("Attack", attack);
 
 		if(grounded || airControl)
