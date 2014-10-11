@@ -76,16 +76,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	public void Move(float move, bool attack, bool jump, bool convert)
 	{
-		if(!attack && anim.GetBool("Attack"))
-		{
-			attack = true;
-		}
 
 		if(grounded || airControl)
 		{
 			if(!isAttacking && attack){
 				Attack();
-				attackDelay = 0.3f;
+				attackDelay = 0.4f;
 				attack = false;
 			}
 			else{

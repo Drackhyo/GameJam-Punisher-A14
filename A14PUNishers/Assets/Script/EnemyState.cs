@@ -22,22 +22,19 @@ public class EnemyState : MonoBehaviour {
 	public void TakeDamage(int amount)
 	{
 		health -= amount;
+		Debug.Log(health);
 	}
 
 	void Dies()
 	{
 		if (rigidbody2D.gameObject.tag == "Human")
 		{
-			BecomeCorpse();
+			//human
 		}
 		else
 		{
-			//demon death
+
 		}
-	}
-
-	void BecomeCorpse()
-	{
-
+		Destroy(gameObject);
 	}
 }
