@@ -1,0 +1,226 @@
+Initialize engine version: 4.5.4f1 (e036f44c54c9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 660M (ID=0xfd4)
+    Vendor:   NVIDIA
+    VRAM:     1990 MB
+Default GameObject Tag: Player already registered
+ 
+(Filename:  Line: 66)
+
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Maxime\Desktop\Undying Hope_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Maxime\Desktop\Undying Hope_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Maxime\Desktop\Undying Hope_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Maxime\Desktop\Undying Hope_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.041 seconds
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+UnloadTime: 0.612209 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 128.
+Total: 1.272609 ms (FindLiveObjects: 0.018741 ms CreateObjectMapping: 0.016063 ms MarkObjects: 0.125386 ms  DeleteObjects: 0.161530 ms)
+
+UnloadTime: 0.688066 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1511.
+Total: 2.263210 ms (FindLiveObjects: 0.116908 ms CreateObjectMapping: 0.028111 ms MarkObjects: 0.259251 ms  DeleteObjects: 0.887078 ms)
+
+UnloadTime: 2.791977 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1698.
+Total: 1.825472 ms (FindLiveObjects: 0.123155 ms CreateObjectMapping: 0.037482 ms MarkObjects: 0.401594 ms  DeleteObjects: 0.491730 ms)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+UnloadTime: 4.318484 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 141 unused Assets to reduce memory usage. Loaded Objects now: 140.
+Total: 4.026212 ms (FindLiveObjects: 0.024541 ms CreateObjectMapping: 0.024541 ms MarkObjects: 0.193658 ms  DeleteObjects: 2.829905 ms)
+
+UnloadTime: 0.618456 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 1520.
+Total: 6.428196 ms (FindLiveObjects: 0.111554 ms CreateObjectMapping: 0.041944 ms MarkObjects: 0.333323 ms  DeleteObjects: 4.963713 ms)
+
+UnloadTime: 2.817411 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1698.
+Total: 2.013775 ms (FindLiveObjects: 0.120924 ms CreateObjectMapping: 0.048191 ms MarkObjects: 0.395794 ms  DeleteObjects: 0.515380 ms)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+UnloadTime: 5.542456 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2905.
+Total: 2.290876 ms (FindLiveObjects: 0.208829 ms CreateObjectMapping: 0.061131 ms MarkObjects: 0.521181 ms  DeleteObjects: 0.555539 ms)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 395)
+
+UnloadTime: 7.939978 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1683.
+Total: 2.149425 ms (FindLiveObjects: 0.122709 ms CreateObjectMapping: 0.049530 ms MarkObjects: 0.460941 ms  DeleteObjects: 0.559555 ms)
+
+UnloadTime: 7.447801 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 164 unused Assets to reduce memory usage. Loaded Objects now: 140.
+Total: 4.178818 ms (FindLiveObjects: 0.023649 ms CreateObjectMapping: 0.038374 ms MarkObjects: 0.223554 ms  DeleteObjects: 2.966894 ms)
+
