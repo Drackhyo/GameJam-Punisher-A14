@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity4.3/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity4.3/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +58,11 @@
      <Compile Include="Assets\Script\EnemyState.cs" />
      <Compile Include="Assets\Script\Parallaxing.cs" />
      <Compile Include="Assets\Script\PlatformChecker.cs" />
+     <Compile Include="Assets\Script\PlatformCheckerZ.cs" />
      <Compile Include="Assets\Script\PlayerState.cs" />
      <Compile Include="Assets\Script\SpecificActionMenu.cs" />
      <Compile Include="Assets\Script\Tiling.cs" />
+     <Compile Include="Assets\Script\ZombieScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
