@@ -76,54 +76,57 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	public void Move(float move, bool attack, bool jump, bool convert)
 	{
-
-		if(grounded || airControl)
-		{
-			if(!isAttacking && attack){
-				Attack();
-				attackDelay = 0.4f;
-				attack = false;
-			}
-			else{
-				attackDelay -= Time.deltaTime;
-				if(attackDelay <= 0){
-					isAttacking = false;
+		if(!isConverting){
+			if(grounded || airControl)
+			{
+				if(!isAttacking && attack){
+					Attack();
+					attackDelay = 0.4f;
+					attack = false;
 				}
+				else{
+					attackDelay -= Time.deltaTime;
+					if(attackDelay <= 0){
+						isAttacking = false;
+					}
+				}
+
+				anim.SetBool("Attack", attack);
+				anim.SetFloat("Speed", Mathf.Abs(move));
+
+				rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+
+				if(move > 0 && !facingRight)
+					Flip();
+				else if(move < 0 && facingRight)
+					Flip();
 			}
 
-			anim.SetBool("Attack", attack);
-			anim.SetFloat("Speed", Mathf.Abs(move));
+			if (grounded && jump) {
+				anim.SetBool("Ground", false);
+				rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			}
 
-			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
-
-			if(move > 0 && !facingRight)
-				Flip();
-			else if(move < 0 && facingRight)
-				Flip();
-		}
-
-		if (grounded && jump) {
-			anim.SetBool("Ground", false);
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-		}
-
-		if(convert){
-			Conversion();
+			if(convert){
+				Conversion();
+			}
 		}
 	}
 
 
 	void Conversion(){
-		if(!isConverting){
-			isConverting = true;
-			foreach (GameObject body in GameObject.FindGameObjectsWithTag("Body")){
-				if((body.transform.position-transform.position).magnitude <= 2){
-					Debug.Log("converting yo ass");
-					break;
-				}
-			};
-		}
-		//mettre is converting a false#beyblade
+		foreach (GameObject body in GameObject.FindGameObjectsWithTag("Body")){
+
+			if((body.transform.position-transform.position).magnitude <= 2){
+
+				gameObject.transform.position = body.transform.position;
+				Destroy(body);
+
+				//isConverting = true;
+				break;
+			}
+
+		};
 	}
 	
 	
