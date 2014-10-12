@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerState : MonoBehaviour {
 
-	int health = 3;
+	int health;
+	int maxHealth = 6;
 	int lives = 3;
 
 
@@ -12,6 +13,7 @@ public class PlayerState : MonoBehaviour {
 	void Start()
 	{
 		startLocation = GameObject.Find("LevelStart");
+		ReplenishHealth();
 		Respawn ();
 
 	}
@@ -32,11 +34,17 @@ public class PlayerState : MonoBehaviour {
 		if (lives > 0)
 		{
 			Respawn();
+			ReplenishHealth();
 		}
 		else
 		{
 		    //gameover
 		}
+	}
+
+	void ReplenishHealth()
+	{
+		health = maxHealth;
 	}
 
 	void Respawn()

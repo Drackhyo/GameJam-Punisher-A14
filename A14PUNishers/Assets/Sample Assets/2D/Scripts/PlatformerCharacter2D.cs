@@ -158,14 +158,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 
-		if ( collision.gameObject.tag != "Platform" && !justCollisionned )
+		if ( collision.gameObject.tag != "Platform" && !justCollisionned && collision.gameObject.tag != "Bullet" )
 		{
-			justCollisionned = true;
-			movementBlockTimer = .3f;
-			airControl = false;
-			grounded = false;
-			//KnockBack();
-			anim.SetBool("Attack", false);
+			KnockBack(1);
+
 		}
 
 		else if(collision.gameObject.tag == "KillZone"){
@@ -176,6 +172,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	public void KnockBack(int damage)
 	{
+		justCollisionned = true;
+		movementBlockTimer = .3f;
+		airControl = false;
+		grounded = false;
+		anim.SetBool("Attack", false);
 		if ( facingRight )
 			rigidbody2D.velocity = new Vector2(-5, 9f);
 		else
