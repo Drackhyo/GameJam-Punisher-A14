@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class AnimIntro : MonoBehaviour {
-	/*
+
 	int state;
 	GameObject bacorn;
 	GameObject rainbow;
@@ -20,15 +20,15 @@ public class AnimIntro : MonoBehaviour {
 		{
 			if(state == 0)
 			{
-				bacorn.rigidbody2D.transform.; //bouger la bacorn
+				bacorn.transform.Translate(Vector2.MoveTowards(bacorn.transform.position, Vector2(-1f,3f), 5 * Time.deltaTime)); //bouger la bacorn
 
-				if(bacorn.rigidbody2D.position() == Vector2())
+				if(bacorn.transform.position == Vector2(-1f,3f))
 				{
 					state++;
 				}
 			}
 
-			if(state == 1)
+			/*if(state == 1)
 			{
 				//on met du texte
 				if(Input.GetKeyUp(KeyCode.Space))
@@ -40,7 +40,7 @@ public class AnimIntro : MonoBehaviour {
 			if(state == 2)
 			{
 				rainbow.rigidbody2D.transform. //un scale
-				if(rainbow a la bonne hauteur)
+				if(/*rainbow a la bonne hauteur*)
 				{
 					state++;
 				}
@@ -49,8 +49,8 @@ public class AnimIntro : MonoBehaviour {
 			if(state == 3)
 			{
 				//Anim perso se lève
-			}
+			}*/
 		}
 	}
-*/
+
 }
