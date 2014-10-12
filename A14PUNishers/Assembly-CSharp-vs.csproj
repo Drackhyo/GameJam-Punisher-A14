@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity4.3/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity4.3/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +50,7 @@
      <Compile Include="Assets\Script\AnimIntro.cs" />
      <Compile Include="Assets\Script\AttackAutoDestroy.cs" />
      <Compile Include="Assets\Script\AutoDestructAnimConversion.cs" />
+     <Compile Include="Assets\Script\BodyIsReady.cs" />
      <Compile Include="Assets\Script\BulletController.cs" />
      <Compile Include="Assets\Script\Camera2DFollow.cs" />
      <Compile Include="Assets\Script\CameraFollow.cs" />
