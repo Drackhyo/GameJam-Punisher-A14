@@ -183,8 +183,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 			KnockBack(1);
 
 		}
-		else if ( collision.gameObject.tag == "EndPlatform" && grounded)
+
+		else if ( collision.gameObject.tag == "EndPlatform" && grounded){
 			GameObject.Find ("LevelStart").transform.GetComponentInChildren<NextLevelGui>().enabled=true;
+			Time.timeScale = 0;
+		}
 
 		else if(collision.gameObject.tag == "KillZone"){
 			Death();
