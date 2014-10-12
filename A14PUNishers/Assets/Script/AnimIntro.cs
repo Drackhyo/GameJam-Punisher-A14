@@ -46,12 +46,10 @@ public class AnimIntro : MonoBehaviour {
 				atext.text += storyText[txtState];
 				txtState++;
 				if(playTextOnce){
-					GetComponent<AudioSource>().Play();
+					GetComponent<AudioSource>().PlayOneShot(textBlip);
 					playTextOnce = false;
 				}
 			}
-			else
-				GetComponent<AudioSource>().loop=false;
 
 			if(Input.GetKeyUp(KeyCode.Mouse0))
 			{
