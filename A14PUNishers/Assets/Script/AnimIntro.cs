@@ -9,7 +9,7 @@ public class AnimIntro : MonoBehaviour {
 	public GameObject bonhomme;
 	public Sprite bonhomme2;
 	public GUIText atext;
-	string storyText = "kjadfhgadkfhvadfvaidsvahksfjvhadjfvbvhjbasjvhbbhjbafjfvbhjfvbhfvsdkhbhsdgbnjsgnb\n\n(Left click to continue)";
+	string storyText = "The Gates of Hell have opened.\nYou are the Chosen One.\nArise and save humanity from its imminent doom. \n\n(Left click to continue)";
 	int txtState = 0;
 
 
@@ -85,7 +85,7 @@ public class AnimIntro : MonoBehaviour {
 			
 		if (state == 6) 
 		{
-			Application.LoadLevel("Stage1");
+			Application.LoadLevel("MainMenu");
 		}
 	}
 
