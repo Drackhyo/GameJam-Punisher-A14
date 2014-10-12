@@ -9,6 +9,8 @@ public class AnimIntro : MonoBehaviour {
 	public GameObject bonhomme;
 	public Sprite bonhomme2;
 	public GUIText atext;
+	string storyText = "kjadfhgadkfhvadfvaidsvahksfjvhadjfvbvhjbasjvhbbhjbafjfvbhjfvbhfvsdkhbhsdgbnjsgnb\n\n(Left click to continue)";
+	int txtState = 0;
 
 
 	// Use this for initialization
@@ -32,8 +34,10 @@ public class AnimIntro : MonoBehaviour {
 
 		if(state == 1)
 		{
-			if(atext.text == "")
-				atext.text = "kjadfhgadkfhvadfvaidsvahksfjvhadjfvbvhjbasjvhbbhjbafjfvbhjfvbhfvsdkhbhsdgbnjsgnb\n\n(Left click to continue)";
+			if(txtState < storyText.Length){
+				atext.text += storyText[txtState];
+				txtState++;
+			}
 			if(Input.GetKeyUp(KeyCode.Mouse0))
 			{
 				atext.text = "";
