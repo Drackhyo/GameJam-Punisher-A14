@@ -26,7 +26,7 @@ public class Platformer2DUserControl : MonoBehaviour
 	void FixedUpdate()
 	{
 		// Read the inputs.
-		bool attack = Input.GetKey(KeyCode.LeftControl);
+		bool attack = Input.GetKey(KeyCode.Mouse0);
 		bool convert = Input.GetKey(KeyCode.F);
 		#if CROSS_PLATFORM_INPUT
 		float h = CrossPlatformInput.GetAxis("Horizontal");
