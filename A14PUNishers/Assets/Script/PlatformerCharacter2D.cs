@@ -38,6 +38,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	float comboTimer = 0f;
 	int comboCount = 1;
+
+	public AudioClip hit;
+	public AudioClip death;
+	public AudioClip jumpSound;
+	public AudioClip convert;
+
 	
 	void Awake()
 	{
@@ -71,6 +77,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 
 			anim.SetBool("IsHurt", justCollisionned);
+			gameObject.GetComponent<AudioSource>().PlayOneShot(hit);
 		}
 		else{
 			deathDelay -= Time.deltaTime;
@@ -81,6 +88,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				isDying = false;
 				gameObject.GetComponent<PlayerState>().Dies();
 				anim.SetBool("IsDead", false);
+				gameObject.GetComponent<AudioSource>().PlayOneShot(death);
 			}
 		}
 	}
@@ -134,6 +142,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				if (grounded && jump) {
 					anim.SetBool("Ground", false);
 					rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+					gameObject.GetComponent<AudioSource>().PlayOneShot(jumpSound);
 				}
 
 				if(convert){
@@ -158,7 +167,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				GameObject convertEffect=Instantiate(animConversion, transform.position, transform.localRotation)as GameObject;
 				convertEffect.transform.Rotate(new Vector3(1,0,0),270f);
 				gameObject.GetComponent<PlayerState>().ReplenishHealth();
-				//isConverting = true;
+				gameObject.GetComponent<AudioSource>().PlayOneShot(convert);
 				break;
 			}
 
@@ -254,8 +263,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 	void Death(){
 		isDying = true;
 		deathDelay = 0.5f;
-		
-		//anim
 	}
 
 }
