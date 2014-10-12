@@ -18,7 +18,7 @@ public class BulletController : MonoBehaviour {
 		}
 	
 	}
-	void OnCollisionEnter2D(Collider2D coll)
+	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if(coll.gameObject.tag=="Player")
 		{
