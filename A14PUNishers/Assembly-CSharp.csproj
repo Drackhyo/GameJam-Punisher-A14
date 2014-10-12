@@ -52,6 +52,7 @@
      <Compile Include="Assets\Sample Assets\2D\Scripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\Restarter.cs" />
      <Compile Include="Assets\Script\AIController.cs" />
+     <Compile Include="Assets\Script\AnimIntro.cs" />
      <Compile Include="Assets\Script\AttackAutoDestroy.cs" />
      <Compile Include="Assets\Script\BulletController.cs" />
      <Compile Include="Assets\Script\CommonActionMenu.cs" />
