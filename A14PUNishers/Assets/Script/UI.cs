@@ -23,8 +23,11 @@ public class UI : MonoBehaviour {
 		health = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerState> ().getHealth();
 		lives = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerState> ().getLives ();
 
+		if (health < 0)
+			health = 0;
+
 		GUI.DrawTexture(new Rect(10, 10, 400, 160), bgTexture);
-		GUI.DrawTexture(new Rect(95, 20, (295f*((float)health / 6f)), 50), lifeBar);
+		GUI.DrawTexture(new Rect(95, 20, Mathf.Round(295f*((float)health / 6f)), 50), lifeBar);
 
 		GUI.Label(new Rect (120, 115, 30, 30), "<size=30>"+lives.ToString()+"</size>");
 	}
