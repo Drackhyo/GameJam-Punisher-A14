@@ -16,6 +16,7 @@ public class EndGameGui : MonoBehaviour {
 	{
 		
 		GUI.DrawTexture(new Rect(0, 0, Screen.width,Screen.height), texture);
+
 		if(GUI.Button(new Rect((Screen.width*0.4f), Screen.height*0.4f, (Screen.width*0.2f), Screen.height*0.2f), "Back to Main Menu"))
 			Application.LoadLevel("MainMenu");
 
