@@ -33,6 +33,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool isDying = false;
 
 	bool isConverting = false;
+	public GameObject zombie;
 	
 	void Awake()
 	{
@@ -128,6 +129,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		foreach (GameObject body in GameObject.FindGameObjectsWithTag("Body")){
 
 			if((body.transform.position-transform.position).magnitude <= 2){
+				Instantiate(zombie, transform.position, new Quaternion(0,0,0,0));
 
 				gameObject.transform.position = body.transform.position;
 				Destroy(body);
@@ -189,6 +191,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			spawnRotAttack.x = 50;
 		}
 		GameObject slash = GameObject.Instantiate(attack, spawnPosAttack, spawnRotAttack)as GameObject;
+		slash.transform.parent = transform;
 	}
 
 	void Death(){

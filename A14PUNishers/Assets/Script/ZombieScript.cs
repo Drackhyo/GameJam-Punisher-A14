@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ZombieScript : MonoBehaviour {
-	private bool facingRight=true;
+	private bool facingRight=false;
 	public float moveSpeed=1;
 	private Animator anim;
 	// Use this for initialization
@@ -23,12 +23,12 @@ public class ZombieScript : MonoBehaviour {
 		}
 		transform.position=newPosition;
 	}
+
 	public void Flip ()
 	{
-			facingRight = !facingRight;
-			
-			Vector3 theScale = transform.localScale;
-			theScale.x *= -1;
-			transform.localScale = theScale;
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }
