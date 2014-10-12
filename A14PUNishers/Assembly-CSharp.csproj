@@ -68,8 +68,8 @@
      <Compile Include="Assets\Script\Tiling.cs" />
      <Compile Include="Assets\Script\UI.cs" />
      <Compile Include="Assets\Script\WinS.cs" />
+     <Compile Include="Assets\Script\WinScript.cs" />
      <Compile Include="Assets\Script\ZombieScript.cs" />
-     <Compile Include="Assets\WinScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
