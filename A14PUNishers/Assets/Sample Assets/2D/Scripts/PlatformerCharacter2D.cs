@@ -123,7 +123,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 			};
 		}
-		//mettre is converting a false
+		//mettre is converting a false#beyblade
 	}
 	
 	
