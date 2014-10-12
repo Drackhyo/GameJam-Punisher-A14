@@ -8,9 +8,12 @@ public class CommonActionMenu : MonoBehaviour {
 	public int sizeIn = 60;
 	public int sizeOut = 50;
 
+	public AudioClip son;
+
 	void OnMouseEnter(){
 		guiText.material.color = enterColor;
 		guiText.fontSize = sizeIn;
+		gameObject.GetComponent<AudioSource>().Play();
 	}
 
 	void OnMouseExit(){
