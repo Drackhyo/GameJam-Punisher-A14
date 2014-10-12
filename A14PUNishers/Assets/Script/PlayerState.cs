@@ -39,7 +39,7 @@ public class PlayerState : MonoBehaviour {
 		else
 		{
 			Time.timeScale=0;
-		    //gameover
+			GameObject.Find ("LevelStart").transform.GetComponentInChildren<EndGameGui>().enabled=true;
 		}
 	}
 
