@@ -132,8 +132,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 				Instantiate(zombie, transform.position, new Quaternion(0,0,0,0));
 
 
-				Vector3 newPosPlayer = new Vector3(body.transform.position.x, transform.position.y+15, transform.position.z);
-				gameObject.transform.position = body.transform.position;
+				Vector3 newPosPlayer = new Vector3(body.transform.position.x, transform.position.y, transform.position.z);
+				gameObject.transform.position = newPosPlayer;
 				Destroy(body);
 
 				//isConverting = true;
