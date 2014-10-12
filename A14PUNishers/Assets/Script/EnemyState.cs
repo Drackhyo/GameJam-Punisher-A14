@@ -41,7 +41,7 @@ public class EnemyState : MonoBehaviour {
 
 				Destroy(gameObject);
 			}
-			else if (deathDelay <= 0.3)
+			else if (deathDelay <= 0.5f)
 			{
 				GetComponent<Animator>().SetBool("Dead", true);
 			}
