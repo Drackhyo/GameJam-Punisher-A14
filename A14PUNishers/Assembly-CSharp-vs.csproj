@@ -59,6 +59,7 @@
      <Compile Include="Assets\Script\CommonActionMenu.cs" />
      <Compile Include="Assets\Script\EndGameGui.cs" />
      <Compile Include="Assets\Script\EnemyState.cs" />
+     <Compile Include="Assets\Script\NextLevelGui.cs" />
      <Compile Include="Assets\Script\Parallaxing.cs" />
      <Compile Include="Assets\Script\PlatformChecker.cs" />
      <Compile Include="Assets\Script\PlatformCheckerZ.cs" />
