@@ -22,7 +22,6 @@ public class AIController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player= GameObject.FindGameObjectWithTag("Player").transform;
-		Debug.Log(player.gameObject.name);
 		enemyState = gameObject.GetComponent<EnemyState>();
 		anim = gameObject.GetComponent<Animator>();
 	}
@@ -84,7 +83,6 @@ public class AIController : MonoBehaviour {
 				hasShot=false;
 				transform.position=newPosition;
 			}
-			//Debug.Log(hasShot);
 
 		}
 
@@ -92,10 +90,12 @@ public class AIController : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 
-		if ( collision.gameObject.tag != "Platform" && collision.gameObject.tag != "Bullet" )
+		if ( collision.gameObject.tag != "Platform" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" )
 		{
 			KnockBack(1);
 		}
+		else if(collision.gameObject.tag == "Player")
+			KnockBack();
 	}
 
 	public void KnockBack(int damage=0)

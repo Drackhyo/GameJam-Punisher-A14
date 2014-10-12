@@ -20,7 +20,7 @@ public class AttackAutoDestroy : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D coll)
 	{
-		if(coll.gameObject.layer==11)
+		if(coll.gameObject.tag=="Demon" || coll.gameObject.tag=="Human")
 		{
 			coll.gameObject.GetComponent<AIController>().KnockBack(1);
 		}
