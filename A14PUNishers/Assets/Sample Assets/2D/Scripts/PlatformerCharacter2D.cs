@@ -35,6 +35,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool isConverting = false;
 	public GameObject zombie;
 	public GameObject animConversion;
+
+	float comboTimer = 0f;
+	int comboCount = 1;
 	
 	void Awake()
 	{
@@ -46,6 +49,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	void FixedUpdate()
 	{
+		if(comboTimer > 0)
+			comboTimer -= Time.deltaTime;
+
 		if(!isDying){
 			anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
 			
@@ -84,13 +90,23 @@ public class PlatformerCharacter2D : MonoBehaviour
 	{
 		if(!isConverting){
 			if(!isAttacking && attack && attackEndDelay <= 0){
-				Attack();
+				if (comboTimer > 0)
+					comboCount++;
+				else
+					comboCount = 1;
+
+				if (comboCount > 3)
+					comboCount = 1;
+
+				Attack(comboCount);
 				attackDelay = 0.4f;
+				comboTimer = 1f;
 				attack = false;
 			}
 
 			else if(isAttacking){
 				attackDelay -= Time.deltaTime;
+
 				if(attackDelay <= 0){
 					isAttacking = false;
 					attackEndDelay = 0.3f;
@@ -141,6 +157,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				Destroy(body);
 				GameObject convertEffect=Instantiate(animConversion, transform.position, transform.localRotation)as GameObject;
 				convertEffect.transform.Rotate(new Vector3(1,0,0),270f);
+				gameObject.GetComponent<PlayerState>().ReplenishHealth();
 				//isConverting = true;
 				break;
 			}
@@ -188,24 +205,44 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 
-	void Attack(){
+	void Attack(int combo){
+		float hitboxOffset;
+		switch (combo){
+		case 1:
+			hitboxOffset = 0f;
+			break;
+		case 2:
+			hitboxOffset = 0.5f;
+			break;
+		case 3:
+			hitboxOffset = 1f;
+			break;
+		default :
+			hitboxOffset = 0f;
+			break;
+		}
+
 		isAttacking = true;
 		if(facingRight){
-			spawnPosAttack = new Vector3(transform.position.x+1, transform.position.y, transform.position.z);
+			spawnPosAttack = new Vector3(transform.position.x+combo-hitboxOffset, transform.position.y, transform.position.z);
 			spawnRotAttack = new Quaternion();
 			spawnRotAttack.x = 50;
 		}
 		else{
-			spawnPosAttack = new Vector3(transform.position.x-1, transform.position.y, transform.position.z);
+			spawnPosAttack = new Vector3(transform.position.x-combo+hitboxOffset, transform.position.y, transform.position.z);
 			spawnRotAttack = new Quaternion();
 			spawnRotAttack.x = 50;
 		}
 		GameObject slash = GameObject.Instantiate(attack, spawnPosAttack, spawnRotAttack)as GameObject;
+		Vector3 theScale = slash.transform.localScale;
+		theScale.x *= combo;
+		theScale.y *= combo;
 		if(!facingRight){
-			Vector3 theScale = slash.transform.localScale;
+
 			theScale.x *= -1;
-			slash.transform.localScale = theScale;
+
 		}
+		slash.transform.localScale = theScale;
 		slash.transform.parent = transform;
 	}
 

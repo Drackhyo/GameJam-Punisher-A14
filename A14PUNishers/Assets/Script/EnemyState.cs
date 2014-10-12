@@ -21,6 +21,7 @@ public class EnemyState : MonoBehaviour {
 	void Update()
 	{
 		if(dead){
+			GetComponent<Animator>().SetBool("IsStunned", true);
 			deathDelay -= Time.deltaTime;
 
 			if (rigidbody2D.gameObject.tag == "Demon")//shrink
@@ -40,6 +41,10 @@ public class EnemyState : MonoBehaviour {
 
 				Destroy(gameObject);
 			}
+			else if (deathDelay <= 0.3)
+			{
+				GetComponent<Animator>().SetBool("Dead", true);
+			}
 		}
 
 		else if (health <= 0)
@@ -54,7 +59,7 @@ public class EnemyState : MonoBehaviour {
 	void Dies()
 	{
 		dead = true;
-		GetComponent<Animator>().SetBool("Dead", true);
+
 
 	}
 }

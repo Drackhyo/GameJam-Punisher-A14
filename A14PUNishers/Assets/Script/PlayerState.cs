@@ -42,7 +42,7 @@ public class PlayerState : MonoBehaviour {
 		}
 	}
 
-	void ReplenishHealth()
+	public void ReplenishHealth()
 	{
 		health = maxHealth;
 	}

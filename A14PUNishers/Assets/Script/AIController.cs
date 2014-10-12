@@ -89,6 +89,10 @@ public class AIController : MonoBehaviour {
 				}
 
 			}
+			else
+			{
+				anim.SetBool("IsStunned",true);
+			}
 		}
 
 	}
@@ -105,8 +109,7 @@ public class AIController : MonoBehaviour {
 
 	public void KnockBack(int damage=0)
 	{
-		if(stunnedTime>=stunDelay)
-		{
+
 			enemyState.TakeDamage(damage);
 			if ( facingRight )
 				rigidbody2D.velocity = new Vector2(-3, 3f);
@@ -114,8 +117,8 @@ public class AIController : MonoBehaviour {
 				rigidbody2D.velocity = new Vector2(3, 3f);
 
 			stunnedTime=0;
-			anim.SetBool("IsStunned",true);
-		}
+			
+		
 	}
 
 	public void Flip ()
