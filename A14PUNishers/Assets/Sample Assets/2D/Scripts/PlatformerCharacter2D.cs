@@ -173,12 +173,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 	}
 	
-	void KnockBack()
+	public void KnockBack(int damage)
 	{
 		if ( facingRight )
 			rigidbody2D.velocity = new Vector2(-5, 9f);
 		else
 			rigidbody2D.velocity = new Vector2(5, 9f);
+		gameObject.GetComponent<PlayerState>().TakeDamage(damage);
+
 	}
 
 
