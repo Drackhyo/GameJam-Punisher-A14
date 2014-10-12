@@ -15,6 +15,7 @@ public class AIController : MonoBehaviour {
 	public float moveSpeed=4;
 	public GameObject BulletPrefab;
 	public float shotDelay=2;
+	public float shootingRange=25;
 
 	EnemyState enemyState;
 	Animator anim;
@@ -47,12 +48,13 @@ public class AIController : MonoBehaviour {
 				spawnpos.x-=1;
 				
 			}
-			if(timeSinceLastShot>shotDelay && (((player.position.x<=transform.position.x)&&!facingRight)||((player.position.x>=transform.position.x)&&facingRight)))
-			{
-				timeSinceLastShot=0;
-				isAttackingTimer=0;
-				anim.SetFloat("TimeAttacking",isAttackingTimer);
+			Vector2 tempVector= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
 
+			if(tempVector.magnitude<=shootingRange && timeSinceLastShot>shotDelay && (((player.position.x<=transform.position.x)&&!facingRight)||((player.position.x>=transform.position.x)&&facingRight)))
+			{
+				   	timeSinceLastShot=0;
+					isAttackingTimer=0;
+					anim.SetFloat("TimeAttacking",isAttackingTimer);
 			}
 			else if(isAttackingTimer<0.5f)
 			{
@@ -63,10 +65,10 @@ public class AIController : MonoBehaviour {
 					if(hasShot==false)
 						{
 						GameObject bulletShot=GameObject.Instantiate(BulletPrefab,spawnpos,transform.rotation)as GameObject;
-						Vector2 tempVector= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
-						tempVector.Normalize();
-						tempVector=tempVector*8;
-						bulletShot.rigidbody2D.velocity= tempVector;
+						Vector2 tempVector2= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
+						tempVector2.Normalize();
+						tempVector2=tempVector2*8;
+						bulletShot.rigidbody2D.velocity= tempVector2;
 						hasShot=true;
 					}
 				}
