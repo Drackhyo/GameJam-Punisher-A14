@@ -4,8 +4,8 @@
     <Files>
       <File FileName="Assets\Script\AnimIntro.cs" Line="35" Column="4" />
       <File FileName="Assets\Script\SpecificActionMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\EndGameGui.cs" Line="18" Column="72" />
-      <File FileName="Assets\Script\UI.cs" Line="21" Column="43" />
+      <File FileName="Assets\Script\EndGameGui.cs" Line="27" Column="1" />
+      <File FileName="Assets\Script\UI.cs" Line="25" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
