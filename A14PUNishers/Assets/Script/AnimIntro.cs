@@ -15,7 +15,7 @@ public class AnimIntro : MonoBehaviour {
 	public AudioClip holy;
 	public AudioClip music;
 	public AudioClip transformation;
-	public AudioClip demonDeath;
+	public AudioClip swish;
 
 	// Use this for initialization
 	void Start () {
@@ -77,7 +77,8 @@ public class AnimIntro : MonoBehaviour {
 			if(bacorn.transform.position.x > 12.5f)
 			{
 				state++;
-				GetComponent<AudioSource>().PlayOneShot(demonDeath);
+
+				GetComponent<AudioSource>().PlayOneShot(swish);
 			}
 		}
 
