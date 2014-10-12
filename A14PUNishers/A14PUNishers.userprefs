@@ -1,11 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\UI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\PlayerState.cs">
     <Files>
-      <File FileName="Assets\Script\AnimIntro.cs" Line="35" Column="4" />
+      <File FileName="Assets\Script\EndGameGui.cs" Line="18" Column="3" />
+      <File FileName="Assets\Script\AnimIntro.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\SpecificActionMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\EndGameGui.cs" Line="18" Column="72" />
-      <File FileName="Assets\Script\UI.cs" Line="21" Column="43" />
+      <File FileName="Assets\Script\EnemyState.cs" Line="44" Column="30" />
+      <File FileName="Assets\Script\NextLevelGui.cs" Line="15" Column="115" />
+      <File FileName="Assets\Script\AIController.cs" Line="33" Column="25" />
+      <File FileName="Assets\Script\PlayerState.cs" Line="29" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
