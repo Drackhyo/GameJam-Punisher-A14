@@ -10,10 +10,10 @@ public class BodyIsReady : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		RaycastHit2D hit = Physics2D.BoxCast(transform.position,new Vector2(1,2),90f,Vector2.up,1);
-		if (hit.collider != null)
+		RaycastHit2D hit3 = Physics2D.Raycast(new Vector2(transform.position.x-2f,transform.position.y+0.7f), Vector2.right,4);
+		if (hit3.collider != null)
 		{
-			if(hit.collider.gameObject.tag=="Player")
+			if(hit3.collider.gameObject.tag=="Player")
 			{
 				fadeOut=0.5f;
 				transform.FindChild("Hover").GetComponent<SpriteRenderer>().enabled=true;
