@@ -25,6 +25,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public GameObject attack;
 	bool isAttacking = false;
 	float attackDelay;
+	float attackEndDelay = 0f;
 	Vector3 spawnPosAttack;
 	Quaternion spawnRotAttack;
 
@@ -77,39 +78,48 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public void Move(float move, bool attack, bool jump, bool convert)
 	{
 		if(!isConverting){
-			if(grounded || airControl)
-			{
-				if(!isAttacking && attack){
-					Attack();
-					attackDelay = 0.4f;
-					attack = false;
+			if(!isAttacking && attack && attackEndDelay <= 0){
+				Attack();
+				attackDelay = 0.4f;
+				attack = false;
+			}
+
+			else if(isAttacking){
+				attackDelay -= Time.deltaTime;
+				if(attackDelay <= 0){
+					isAttacking = false;
+					attackEndDelay = 0.3f;
 				}
-				else{
-					attackDelay -= Time.deltaTime;
-					if(attackDelay <= 0){
-						isAttacking = false;
-					}
+			}
+
+			else{
+
+				if(attackEndDelay >= 0){
+					attackEndDelay -= Time.deltaTime;
 				}
 
-				anim.SetBool("Attack", attack);
-				anim.SetFloat("Speed", Mathf.Abs(move));
+				if(grounded || airControl)
+				{
+					anim.SetFloat("Speed", Mathf.Abs(move));
 
-				rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+					rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 
-				if(move > 0 && !facingRight)
-					Flip();
-				else if(move < 0 && facingRight)
-					Flip();
+					if(move > 0 && !facingRight)
+						Flip();
+					else if(move < 0 && facingRight)
+						Flip();
+				}
+
+				if (grounded && jump) {
+					anim.SetBool("Ground", false);
+					rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+				}
+
+				if(convert){
+					Conversion();
+				}
 			}
-
-			if (grounded && jump) {
-				anim.SetBool("Ground", false);
-				rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-			}
-
-			if(convert){
-				Conversion();
-			}
+			anim.SetBool("Attack", isAttacking);
 		}
 	}
 
