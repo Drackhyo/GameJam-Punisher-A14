@@ -4,9 +4,14 @@ using System.Collections;
 public class NextLevelGui : MonoBehaviour {
 	public Texture texture;
 	public string nextLevel;
+
+	public AudioClip success;
+
 	// Use this for initialization
 	void Start () {
-	
+		gameObject.GetComponent<AudioSource>().PlayOneShot(success);
+		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Stop();
+
 	}
 	
 	// Update is called once per frame

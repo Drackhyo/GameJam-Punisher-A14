@@ -43,6 +43,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip death;
 	public AudioClip jumpSound;
 	public AudioClip convert;
+	public AudioClip attackSound;
+	bool playHitOnce = true;
+	bool playDeathOnce = true;
 
 	
 	void Awake()
@@ -64,11 +67,17 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if(justCollisionned)
 			{
 				movementBlockTimer -= Time.deltaTime;
-				
+
+				if(playHitOnce){
+					gameObject.GetComponent<AudioSource>().PlayOneShot(hit);
+					playHitOnce = false;
+				}
+
 				if ( movementBlockTimer <= 0 )
 				{
 					justCollisionned = false;
 					airControl = true;
+					playHitOnce = true;
 				}
 			}
 			else{
@@ -77,18 +86,22 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 
 			anim.SetBool("IsHurt", justCollisionned);
-			gameObject.GetComponent<AudioSource>().PlayOneShot(hit);
 		}
 		else{
 			deathDelay -= Time.deltaTime;
 			anim.SetBool("IsDead", true);
 
+			if(playDeathOnce){
+				gameObject.GetComponent<AudioSource>().PlayOneShot(death);
+				playDeathOnce = false;
+			}
+			
 			if(deathDelay <= 0){
 				deathDelay = 0.7f;
 				isDying = false;
 				gameObject.GetComponent<PlayerState>().Dies();
 				anim.SetBool("IsDead", false);
-				gameObject.GetComponent<AudioSource>().PlayOneShot(death);
+				playDeathOnce = true;
 			}
 		}
 	}
@@ -110,6 +123,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				attackDelay = 0.4f;
 				comboTimer = 1f;
 				attack = false;
+				gameObject.GetComponent<AudioSource>().PlayOneShot(attackSound);
 			}
 
 			else if(isAttacking){
