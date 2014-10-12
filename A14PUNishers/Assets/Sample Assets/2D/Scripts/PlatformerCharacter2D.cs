@@ -29,7 +29,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Vector3 spawnPosAttack;
 	Quaternion spawnRotAttack;
 
-	float deathDelay = 0.5f;
+	float deathDelay = 0.7f;
 	public bool isDying = false;
 
 	bool isConverting = false;
@@ -68,11 +68,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		else{
 			deathDelay -= Time.deltaTime;
+			anim.SetBool("IsDead", true);
+
 			if(deathDelay <= 0){
-				deathDelay = 0.5f;
+				deathDelay = 0.7f;
 				isDying = false;
 				gameObject.GetComponent<PlayerState>().Dies();
-
+				anim.SetBool("IsDead", false);
 			}
 		}
 	}
@@ -200,7 +202,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		GameObject slash = GameObject.Instantiate(attack, spawnPosAttack, spawnRotAttack)as GameObject;
 		if(!facingRight){
-			slash.transform.localScale = new Vector3(-1,1,1);
+			Vector3 theScale = slash.transform.localScale;
+			theScale.x *= -1;
+			slash.transform.localScale = theScale;
 		}
 		slash.transform.parent = transform;
 	}
