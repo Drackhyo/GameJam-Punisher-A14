@@ -20,7 +20,7 @@ public class PlayerState : MonoBehaviour {
 	void Update()
 	{
 		if (health <= 0)
-			Dies();
+			gameObject.GetComponent<PlatformerCharacter2D>().isDying = true;
 	}
 
 	public void TakeDamage(int amount)
@@ -33,8 +33,8 @@ public class PlayerState : MonoBehaviour {
 		lives--;
 		if (lives > 0)
 		{
-			Respawn();
 			ReplenishHealth();
+			Respawn();
 		}
 		else
 		{

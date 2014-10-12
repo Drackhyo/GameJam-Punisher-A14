@@ -30,7 +30,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Quaternion spawnRotAttack;
 
 	float deathDelay = 0.5f;
-	bool isDying = false;
+	public bool isDying = false;
 
 	bool isConverting = false;
 	public GameObject zombie;
@@ -69,6 +69,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		else{
 			deathDelay -= Time.deltaTime;
 			if(deathDelay <= 0){
+				deathDelay = 0.5f;
 				isDying = false;
 				gameObject.GetComponent<PlayerState>().Dies();
 
@@ -166,7 +167,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		else if(collision.gameObject.tag == "KillZone"){
 			Death();
-
 		}
 	}
 	
