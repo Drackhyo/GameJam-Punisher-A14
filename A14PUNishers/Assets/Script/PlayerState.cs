@@ -52,4 +52,11 @@ public class PlayerState : MonoBehaviour {
 	{
 		transform.position = new Vector2(startLocation.transform.position.x, startLocation.transform.position.y);
 	}
+
+	int getLives(){
+		return lives;
+	}
+	int getHealth(){
+		return health;
+	}
 }
