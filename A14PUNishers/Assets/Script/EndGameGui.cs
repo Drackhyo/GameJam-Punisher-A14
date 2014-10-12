@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EndGameGui : MonoBehaviour {
 	public Texture texture;
+	public Texture _text;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,6 +17,7 @@ public class EndGameGui : MonoBehaviour {
 	{
 		
 		GUI.DrawTexture(new Rect(0, 0, Screen.width,Screen.height), texture);
+		GUI.DrawTexture (new Rect ((Screen.width / 2)-(_text.width / 2), (Screen.height / 4)-(_text.height / 2), _text.width, _text.height), _text);
 
 		if(GUI.Button(new Rect((Screen.width*0.4f), Screen.height*0.4f, (Screen.width*0.2f), Screen.height*0.2f), "Back to Main Menu"))
 			Application.LoadLevel("MainMenu");
