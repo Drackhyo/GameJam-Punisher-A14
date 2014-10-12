@@ -54,6 +54,7 @@
      <Compile Include="Assets\Script\AIController.cs" />
      <Compile Include="Assets\Script\AnimIntro.cs" />
      <Compile Include="Assets\Script\AttackAutoDestroy.cs" />
+     <Compile Include="Assets\Script\AutoDestructAnimConversion.cs" />
      <Compile Include="Assets\Script\BulletController.cs" />
      <Compile Include="Assets\Script\CommonActionMenu.cs" />
      <Compile Include="Assets\Script\EnemyState.cs" />
