@@ -6,9 +6,6 @@ public class PlayerState : MonoBehaviour {
 	int health = 3;
 	int lives = 3;
 
-	bool hasHead = true;
-	bool hasArms = true;
-	bool hasLegs = true;
 
 	GameObject startLocation;
 
@@ -24,7 +21,7 @@ public class PlayerState : MonoBehaviour {
 			Dies();
 	}
 
-	void TakeDamage(int amount)
+	public void TakeDamage(int amount)
 	{
 		health -= amount;
 	}
