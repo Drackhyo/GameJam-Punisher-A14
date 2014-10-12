@@ -131,6 +131,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if((body.transform.position-transform.position).magnitude <= 2){
 				Instantiate(zombie, transform.position, new Quaternion(0,0,0,0));
 
+
+				//Vector3 newPosPlayer = ;
 				gameObject.transform.position = body.transform.position;
 				Destroy(body);
 
@@ -191,6 +193,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 			spawnRotAttack.x = 50;
 		}
 		GameObject slash = GameObject.Instantiate(attack, spawnPosAttack, spawnRotAttack)as GameObject;
+		if(!facingRight){
+			slash.transform.localScale = new Vector3(-1,1,1);
+		}
 		slash.transform.parent = transform;
 	}
 
