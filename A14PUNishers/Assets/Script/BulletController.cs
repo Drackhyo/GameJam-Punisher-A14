@@ -28,7 +28,9 @@ public class BulletController : MonoBehaviour {
 		{
 			if(coll.gameObject.tag=="Human")
 			{
-				coll.gameObject.GetComponent<AIController>().KnockBack(3);
+
+				coll.gameObject.tag="Demon";
+				coll.gameObject.GetComponent<AIController>().KnockBack(8);
 			}
 		}
 

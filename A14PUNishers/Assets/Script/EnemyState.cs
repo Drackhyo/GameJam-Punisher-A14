@@ -23,7 +23,7 @@ public class EnemyState : MonoBehaviour {
 		if(dead){
 			deathDelay -= Time.deltaTime;
 
-			if (rigidbody2D.gameObject.tag == "Demon")
+			if (rigidbody2D.gameObject.tag == "Demon")//shrink
 			{
 				transform.localScale=transform.localScale*0.9f;
 			}
