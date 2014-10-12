@@ -20,12 +20,17 @@ public class EnemyState : MonoBehaviour {
 
 	void Update()
 	{
-		if (health <= 0)
-			Dies();
-
 		if(dead){
 			deathDelay -= Time.deltaTime;
+
+			if(deathDelay <= 0){
+				Instantiate(body, transform.position, transform.rotation);
+				Destroy(gameObject);
+			}
 		}
+
+		else if (health <= 0)
+			Dies();
 	}
 
 	public void TakeDamage(int amount)
@@ -36,15 +41,13 @@ public class EnemyState : MonoBehaviour {
 
 	void Dies()
 	{
+		dead = true;
+
 		if (rigidbody2D.gameObject.tag == "Human")
 		{
 			GetComponent<Animator>().SetBool("Dead", true);
-
-			if(deathDelay <= 0){
-
-				Destroy(gameObject);
-			}
 		}
+
 		else
 		{
 			Destroy(gameObject);
