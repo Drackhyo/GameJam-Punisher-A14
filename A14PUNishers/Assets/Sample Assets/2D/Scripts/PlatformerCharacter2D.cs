@@ -178,11 +178,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 
-		if ( collision.gameObject.tag != "Platform" && !justCollisionned && collision.gameObject.tag != "Bullet" )
+		if ( collision.gameObject.tag != "Platform" && !justCollisionned && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "EndPlatform" )
 		{
 			KnockBack(1);
 
 		}
+		else if ( collision.gameObject.tag == "EndPlatform" && grounded)
+			GameObject.Find ("LevelStart").transform.GetComponentInChildren<NextLevelGui>().enabled=true;
 
 		else if(collision.gameObject.tag == "KillZone"){
 			Death();
