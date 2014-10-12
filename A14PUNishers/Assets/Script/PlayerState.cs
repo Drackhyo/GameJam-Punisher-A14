@@ -38,6 +38,7 @@ public class PlayerState : MonoBehaviour {
 		}
 		else
 		{
+			Time.timeScale=0;
 		    //gameover
 		}
 	}
