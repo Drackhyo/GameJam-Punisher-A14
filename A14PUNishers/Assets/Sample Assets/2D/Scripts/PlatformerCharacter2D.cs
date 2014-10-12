@@ -162,7 +162,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			movementBlockTimer = .3f;
 			airControl = false;
 			grounded = false;
-			KnockBack();
+			//KnockBack();
 			anim.SetBool("Attack", false);
 		}
 
