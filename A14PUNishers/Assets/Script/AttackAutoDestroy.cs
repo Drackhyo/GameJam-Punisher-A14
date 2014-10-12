@@ -18,7 +18,7 @@ public class AttackAutoDestroy : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerStay2D(Collider2D coll)
+	void OnTriggerEnter2D(Collider2D coll)
 	{
 		if(coll.gameObject.tag=="Demon" || coll.gameObject.tag=="Human")
 		{
