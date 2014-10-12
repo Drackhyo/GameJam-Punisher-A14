@@ -39,13 +39,14 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity4.3/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity4.3/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GameMusicOnCamera.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\Platformer2DUserControl.cs" />
@@ -66,6 +67,7 @@
      <Compile Include="Assets\Script\PlayerState.cs" />
      <Compile Include="Assets\Script\SpecificActionMenu.cs" />
      <Compile Include="Assets\Script\Tiling.cs" />
+     <Compile Include="Assets\Script\UI.cs" />
      <Compile Include="Assets\Script\ZombieScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
