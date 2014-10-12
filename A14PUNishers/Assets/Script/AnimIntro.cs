@@ -8,6 +8,7 @@ public class AnimIntro : MonoBehaviour {
 	public GameObject rainbow;
 	public GameObject bonhomme;
 	public Sprite bonhomme2;
+	public GUIText atext;
 
 
 	// Use this for initialization
@@ -31,9 +32,11 @@ public class AnimIntro : MonoBehaviour {
 
 		if(state == 1)
 		{
-			//on met du texte
-			if(Input.GetKeyUp(KeyCode.Space))
+			if(atext.text == "")
+				atext.text = "kjadfhgadkfhvadfvaidsvahksfjvhadjfvbvhjbasjvhbbhjbafjfvbhjfvbhfvsdkhbhsdgbnjsgnb\n\n(Left click to continue)";
+			if(Input.GetKeyUp(KeyCode.Mouse0))
 			{
+				atext.text = "";
 				state++;
 			}
 		}
@@ -65,8 +68,18 @@ public class AnimIntro : MonoBehaviour {
 				state++;
 			}
 		}
-			
+
 		if (state == 5) 
+		{
+			bonhomme.GetComponent<Animator>().enabled = true;
+			bonhomme.transform.position = Vector3.Lerp (bonhomme.transform.position, new Vector3(20f,bonhomme.transform.position.y,0f), 0.6f * Time.deltaTime);
+			if(bonhomme.transform.position.x > 14.7f)
+			{
+				state++;
+			}
+		}
+			
+		if (state == 6) 
 		{
 			Application.LoadLevel("Stage1");
 		}
