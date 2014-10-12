@@ -8,6 +8,9 @@ public class EnemyState : MonoBehaviour {
 	float deathDelay = 0.6f;
 	bool dead = false;
 
+	public AudioClip humanDeath;
+	public AudioClip hit;
+
 	public GameObject body;
 
 	void Start()
@@ -54,12 +57,12 @@ public class EnemyState : MonoBehaviour {
 	public void TakeDamage(int amount)
 	{
 		health -= amount;
+		gameObject.GetComponent<AudioSource>().PlayOneShot(hit);
 	}
 
 	void Dies()
 	{
 		dead = true;
-
-
+		gameObject.GetComponent<AudioSource>().PlayOneShot(humanDeath);
 	}
 }
