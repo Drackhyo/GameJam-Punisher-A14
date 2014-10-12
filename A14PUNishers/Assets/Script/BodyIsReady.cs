@@ -10,7 +10,7 @@ public class BodyIsReady : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
+		RaycastHit2D hit = Physics2D.BoxCast(transform.position,new Vector2(1,2),90f,Vector2.up,1);
 		if (hit.collider != null)
 		{
 			if(hit.collider.gameObject.tag=="Player")
