@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WinScript : MonoBehaviour {
+public class WinS : MonoBehaviour {
 	public Texture texture;
 	// Use this for initialization
 	void Start () {
