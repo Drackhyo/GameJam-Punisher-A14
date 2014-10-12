@@ -170,6 +170,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		else if(collision.gameObject.tag == "KillZone"){
 			Death();
+
 		}
 	}
 	
