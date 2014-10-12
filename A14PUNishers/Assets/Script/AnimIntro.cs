@@ -16,6 +16,9 @@ public class AnimIntro : MonoBehaviour {
 	public AudioClip music;
 	public AudioClip transformation;
 	public AudioClip swish;
+	public AudioClip textBlip;
+
+	bool playTextOnce = true;
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +45,14 @@ public class AnimIntro : MonoBehaviour {
 			if(txtState < storyText.Length){
 				atext.text += storyText[txtState];
 				txtState++;
+				if(playTextOnce){
+					GetComponent<AudioSource>().Play();
+					playTextOnce = false;
+				}
 			}
+			else
+				GetComponent<AudioSource>().loop=false;
+
 			if(Input.GetKeyUp(KeyCode.Mouse0))
 			{
 				atext.text = "";
