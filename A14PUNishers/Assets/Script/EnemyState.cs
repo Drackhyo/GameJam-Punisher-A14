@@ -13,9 +13,9 @@ public class EnemyState : MonoBehaviour {
 	void Start()
 	{
 		if (rigidbody2D.gameObject.tag == "Human")
-			health = 3;
+			health = 2;
 		else
-			health = 6;
+			health = 4;
 	}
 
 	void Update()
@@ -23,13 +23,21 @@ public class EnemyState : MonoBehaviour {
 		if(dead){
 			deathDelay -= Time.deltaTime;
 
+			if (rigidbody2D.gameObject.tag == "Demon")
+			{
+				transform.localScale=transform.localScale*0.9f;
+			}
 			if(deathDelay <= 0){
-				Vector3 bodySpawnPos = new Vector3();
-				bodySpawnPos.x = transform.position.x;
-				bodySpawnPos.y = transform.position.y-.5f;
-				bodySpawnPos.z = transform.position.z;
+				if (rigidbody2D.gameObject.tag == "Human")
+				{
+					Vector3 bodySpawnPos = new Vector3();
+					bodySpawnPos.x = transform.position.x;
+					bodySpawnPos.y = transform.position.y-.5f;
+					bodySpawnPos.z = transform.position.z;
 
-				Instantiate(body, bodySpawnPos, transform.rotation);
+					Instantiate(body, bodySpawnPos, transform.rotation);
+				}
+
 				Destroy(gameObject);
 			}
 		}
@@ -46,16 +54,7 @@ public class EnemyState : MonoBehaviour {
 	void Dies()
 	{
 		dead = true;
-
-		if (rigidbody2D.gameObject.tag == "Human")
-		{
-			GetComponent<Animator>().SetBool("Dead", true);
-		}
-
-		else
-		{
-			Destroy(gameObject);
-		}
+		GetComponent<Animator>().SetBool("Dead", true);
 
 	}
 }

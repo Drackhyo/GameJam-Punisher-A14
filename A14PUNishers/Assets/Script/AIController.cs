@@ -30,62 +30,65 @@ public class AIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		stunnedTime += Time.deltaTime;
-		Vector3 newPosition = transform.position;
-		if(stunnedTime>stunDelay)
+		if(!anim.GetBool("Dead")) 
 		{
-			anim.SetBool("IsStunned",false);
-			timeSinceLastShot+=Time.deltaTime;
-			spawnpos=transform.position;
-			if(facingRight)
+			stunnedTime += Time.deltaTime;
+			Vector3 newPosition = transform.position;
+			if(stunnedTime>stunDelay)
 			{
-				newPosition.x += moveSpeed * Time.deltaTime; 
-				spawnpos.x+=1;
-			}
-			else
-			{
-				newPosition.x -= moveSpeed * Time.deltaTime; 
-				spawnpos.x-=1;
-				
-			}
-			Vector2 tempVector= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
-
-			if(tempVector.magnitude<=shootingRange && timeSinceLastShot>shotDelay && (((player.position.x<=transform.position.x)&&!facingRight)||((player.position.x>=transform.position.x)&&facingRight)))
-			{
-				   	timeSinceLastShot=0;
-					isAttackingTimer=0;
-					anim.SetFloat("TimeAttacking",isAttackingTimer);
-			}
-			else if(isAttackingTimer<0.5f)
-			{
-				isAttackingTimer+=Time.deltaTime;
-				if(isAttackingTimer>0.25f)
+				anim.SetBool("IsStunned",false);
+				timeSinceLastShot+=Time.deltaTime;
+				spawnpos=transform.position;
+				if(facingRight)
 				{
-					anim.SetFloat("TimeAttacking",isAttackingTimer);
-					if(hasShot==false)
-						{
-						GameObject bulletShot=GameObject.Instantiate(BulletPrefab,spawnpos,transform.rotation)as GameObject;
-						Vector2 tempVector2= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
-						tempVector2.Normalize();
-						tempVector2=tempVector2*8;
-						bulletShot.rigidbody2D.velocity= tempVector2;
-						hasShot=true;
+					newPosition.x += moveSpeed * Time.deltaTime; 
+					spawnpos.x+=1;
+				}
+				else
+				{
+					newPosition.x -= moveSpeed * Time.deltaTime; 
+					spawnpos.x-=1;
+					
+				}
+				Vector2 tempVector= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
+
+				if(tempVector.magnitude<=shootingRange && timeSinceLastShot>shotDelay && (((player.position.x<=transform.position.x)&&!facingRight)||((player.position.x>=transform.position.x)&&facingRight)))
+				{
+					   	timeSinceLastShot=0;
+						isAttackingTimer=0;
+						anim.SetFloat("TimeAttacking",isAttackingTimer);
+				}
+				else if(isAttackingTimer<0.5f)
+				{
+					isAttackingTimer+=Time.deltaTime;
+					if(isAttackingTimer>0.25f)
+					{
+						anim.SetFloat("TimeAttacking",isAttackingTimer);
+						if(hasShot==false)
+							{
+							GameObject bulletShot=GameObject.Instantiate(BulletPrefab,spawnpos,transform.rotation)as GameObject;
+							Vector2 tempVector2= new Vector2((player.position.x - transform.position.x),player.position.y - transform.position.y);
+							tempVector2.Normalize();
+							tempVector2=tempVector2*8;
+							bulletShot.rigidbody2D.velocity= tempVector2;
+							hasShot=true;
+						}
 					}
+					else if(isAttackingTimer>0.35f)
+					{
+						isAttackingTimer=1;
+						hasShot=false;
+					}
+
+
 				}
-				else if(isAttackingTimer>0.35f)
+				else
 				{
-					isAttackingTimer=1;
 					hasShot=false;
+					transform.position=newPosition;
 				}
 
-
 			}
-			else
-			{
-				hasShot=false;
-				transform.position=newPosition;
-			}
-
 		}
 
 	}
