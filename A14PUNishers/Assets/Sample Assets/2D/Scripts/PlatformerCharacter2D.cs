@@ -130,13 +130,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 		foreach (GameObject body in GameObject.FindGameObjectsWithTag("Body")){
 
 			if((body.transform.position-transform.position).magnitude <= 2){
-				Instantiate(animConversion, body.transform.position, new Quaternion(-90,0,0,0));
-				Instantiate(zombie, transform.position, new Quaternion(0,0,0,0));
 
+				Instantiate(zombie, transform.position, new Quaternion(0,0,0,0));
+				
 				Vector3 newPosPlayer = new Vector3(body.transform.position.x, transform.position.y, transform.position.z);
 				gameObject.transform.position = newPosPlayer;
 				Destroy(body);
-
+				GameObject convertEffect=Instantiate(animConversion, transform.position, transform.localRotation)as GameObject;
+				convertEffect.transform.Rotate(new Vector3(1,0,0),270f);
 				//isConverting = true;
 				break;
 			}
