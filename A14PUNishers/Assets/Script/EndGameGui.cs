@@ -3,13 +3,10 @@ using System.Collections;
 
 public class EndGameGui : MonoBehaviour {
 	public Texture texture;
-<<<<<<< HEAD
 
 	public AudioClip gameOver;
 
-=======
 	public Texture _text;
->>>>>>> origin/master
 	// Use this for initialization
 	void Start () {
 		gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver);

@@ -4,13 +4,10 @@ using System.Collections;
 public class NextLevelGui : MonoBehaviour {
 	public Texture texture;
 	public string nextLevel;
-<<<<<<< HEAD
 
 	public AudioClip success;
 
-=======
 	public Texture _text;
->>>>>>> origin/master
 	// Use this for initialization
 	void Start () {
 		gameObject.GetComponent<AudioSource>().PlayOneShot(success);
