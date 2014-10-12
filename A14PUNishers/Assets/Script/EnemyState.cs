@@ -5,7 +5,7 @@ public class EnemyState : MonoBehaviour {
 
 	int health;
 
-	float deathDelay = 0.4f;
+	float deathDelay = 0.6f;
 	bool dead = false;
 
 	public GameObject body;
@@ -24,7 +24,12 @@ public class EnemyState : MonoBehaviour {
 			deathDelay -= Time.deltaTime;
 
 			if(deathDelay <= 0){
-				Instantiate(body, transform.position, transform.rotation);
+				Vector3 bodySpawnPos = new Vector3();
+				bodySpawnPos.x = transform.position.x;
+				bodySpawnPos.y = transform.position.y-.5f;
+				bodySpawnPos.z = transform.position.z;
+
+				Instantiate(body, bodySpawnPos, transform.rotation);
 				Destroy(gameObject);
 			}
 		}
